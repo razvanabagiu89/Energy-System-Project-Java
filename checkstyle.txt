@@ -1,0 +1,16 @@
+Starting audit...
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/Main.java:3:15: Using the '.*' form of import should be avoided - factory.*. [AvoidStarImport]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/Main.java:4:14: Using the '.*' form of import should be avoided - fileio.*. [AvoidStarImport]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/Main.java:20:5: Method length is 351 lines (max allowed is 150). [MethodLength]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:6:18: Using the '.*' form of import should be avoided - strategies.*. [AvoidStarImport]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:70:73: '10' is a magic number. [MagicNumber]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:101:43: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:102:43: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:103:46: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Distributor.java:104:38: Inner assignments should be avoided. [InnerAssignment]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/fileio/Consumer.java:108:61: '1.2' is a magic number. [MagicNumber]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/input/MInput.java:18:19: Variable 'mInput' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/strategies/EnergyChoiceStrategyType.java:10:25: Variable 'label' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] /home/razvan/Desktop/proiect-etapa2-energy-system/./src/Test.java:9:28: Using the '.*' form of import should be avoided - java.util.concurrent.*. [AvoidStarImport]
+Audit done.
+Checkstyle ends with 13 errors.
