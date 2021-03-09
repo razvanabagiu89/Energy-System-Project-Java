@@ -1,4 +1,4 @@
-# Project Energy System - Phase 2
+# Energy System Project in Java
 
 ## About
 
