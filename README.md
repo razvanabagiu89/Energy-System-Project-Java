@@ -7,9 +7,8 @@ Object-Oriented Programming, Series CA, CD
 
 <https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/proiect/etapa2>
 
-Student: Abagiu Ioan-Razvan 321CD
 
-## Tests
+## How to run tests
 
 Class Test#main
   * runs the solution on the tests from checker/, comparing out results with
@@ -18,7 +17,8 @@ Class Test#main
 
 Tests details: checker/README
 
-Must have libraries for the implementation:
+
+### Libraries for the implementation:
 * Jackson Core 
 * Jackson Databind 
 * Jackson Annotations
@@ -43,62 +43,63 @@ The order of the instructions is described in the ### Flow section.
 
 ### Entities
 
-Packages are displayed in this form: [Package] -> class - details
 
-[checker] - all of the checker's components including google's checkstyle
+#### checker
+ - all of the checker's components including google's checkstyle
 
-[entities] - enum with all the types of energy a producer can have
+#### entities
+- enum with all the types of energy a producer can have
 
-[factory] - implemented here the Factory design pattern
+#### factory
 
--> ConsumerOutput - contains the consumer's output data to be displayed in JSON
+- ConsumerOutput - contains the consumer's output data to be displayed in JSON
 format
--> DistributorOutput - contains the distributor's output data to be displayed in
+- DistributorOutput - contains the distributor's output data to be displayed in
 JSON format
--> EntityFactory - factory for creating consumers, distributors and producers
--> Output (interface) - common interface for the three types
--> OutputData - class that contains all the final data to be displayed in JSON
+- EntityFactory - factory for creating consumers, distributors and producers
+- Output (interface) - common interface for the three types
+- OutputData - class that contains all the final data to be displayed in JSON
 format
--> ProducerOutput - contains the producer's output data to be displayed in JSON
+- ProducerOutput - contains the producer's output data to be displayed in JSON
 format
 
-[fileio] - classes for handling the input/output of the program
+#### fileio 
 
--> Consumer            ]
--> Distributor         ] -> classes for each primar entity
--> Producer            ]
--> DataCons -> contains information about the consumer's signed contract 
--> NewConsumer -> data about the new consumers coming in every month change
--> DistributorChange -> data about the new distributors changes coming in every
+- Consumer            
+- Distributor         
+- Producer            
+- DataCons -> contains information about the consumer's signed contract 
+- NewConsumer -> data about the new consumers coming in every month change
+- DistributorChange -> data about the new distributors changes coming in every
 month - infrastructure cost changes
--> ProducerChange -> data about the new energy a producer is changing in every
+- ProducerChange -> data about the new energy a producer is changing in every
 month
--> MonthState -> contains information about the distributor's that claim energy
+- MonthState -> contains information about the distributor's that claim energy
 from the subscribed producer
--> MonthlyUpdate -> info about all the data that is changing in the current 
+- MonthlyUpdate -> info about all the data that is changing in the current 
 month
--> InitialData -> info about the initial data
--> Input -> initial data and monthly updates, meaning all the total data 
+- InitialData -> info about the initial data
+- Input -> initial data and monthly updates, meaning all the total data 
 fetched from the input JSONs
 
-[input] - the initial input modified so it can sustain a singleton pattern
-and can be changeable so it won't disturb the initial data
--> MInput - stays for ModifiedInput
+#### input
+ - the initial input modified so it can sustain a singleton pattern
+and can be changeable so it won't disturb the initial data.
 
-[strategies] - implemented here the Strategy design pattern used in choosing
+- MInput - stays for ModifiedInput
+
+#### strategies
+ - implemented here the Strategy design pattern used in choosing
 the producers as a distributor
--> EnergyChoiceStrategyType - an enum with all strategies a distributor can have
--> IStrategy (interface) - common interface the other strategies implement with
+- EnergyChoiceStrategyType - an enum with all strategies a distributor can have
+-  IStrategy (interface) - common interface the other strategies implement with
 a choose() method and a compare() method for sorting the producers
--> GreenStrategy - first chooses the renewable-energy producers, then the the
+-  GreenStrategy - first chooses the renewable-energy producers, then the the
 lower prices and higher quantities
--> PriceStrategy - first chooses the lower prices and then the higher energy
+-  PriceStrategy - first chooses the lower prices and then the higher energy
 a producer can deliver to its distributors
--> QuantityStrategy - chooses the higher energy a producer can deliver to
+-  QuantityStrategy - chooses the higher energy a producer can deliver to
 its distributors
-
-Test -> runs the #main class and compares out and ref results for giving score
-Main -> entry point of the implementation
 
 
 ### Flow
@@ -133,12 +134,12 @@ that can be accessed only from the current class.
 Following design patterns where used in this phase apart from the phase 1 -
 Singleton and Factory.
 
--> Strategy Design Pattern
+#### Strategy Design Pattern
 Each distributor has a strategy of choosing their producers, so I implemented
 those strategies in 3 classes and used composition over inheritance for using 
 them.
 
--> Observer Design Pattern
+#### Observer Design Pattern
 By knowing that the distributors subscribed to a producer have to reapply their
 choosing strategy every time the producer made a change, I made the producer
 class as the Observable and their subscribed distributors the observers. 
@@ -154,4 +155,114 @@ put in the description their parameters and return values.
 A limitation I have encountered with the checker is that it doesn't test
 the testcase in which a consumer recovers from his debt. In all the tests, 
 the debtful consumer never recovers and is set to be bankrupt the next month.
+
+## Project structure
+```bash
+
+├── checker
+│   └── resources
+│       ├── config.json
+│       ├── in
+│       │   ├── basic_10.json
+│       │   ├── basic_11.json
+│       │   ├── basic_12.json
+│       │   ├── basic_13.json
+│       │   ├── basic_14.json
+│       │   ├── basic_15.json
+│       │   ├── basic_1.json
+│       │   ├── basic_2.json
+│       │   ├── basic_3.json
+│       │   ├── basic_4.json
+│       │   ├── basic_5.json
+│       │   ├── basic_6.json
+│       │   ├── basic_7.json
+│       │   ├── basic_8.json
+│       │   ├── basic_9.json
+│       │   ├── complex_1.json
+│       │   ├── complex_2.json
+│       │   ├── complex_3.json
+│       │   ├── complex_4.json
+│       │   └── complex_5.json
+│       ├── README
+│       └── ref
+│           ├── basic_10.json
+│           ├── basic_11.json
+│           ├── basic_12.json
+│           ├── basic_13.json
+│           ├── basic_14.json
+│           ├── basic_15.json
+│           ├── basic_1.json
+│           ├── basic_2.json
+│           ├── basic_3.json
+│           ├── basic_4.json
+│           ├── basic_5.json
+│           ├── basic_6.json
+│           ├── basic_7.json
+│           ├── basic_8.json
+│           ├── basic_9.json
+│           ├── complex_1.json
+│           ├── complex_2.json
+│           ├── complex_3.json
+│           ├── complex_4.json
+│           └── complex_5.json
+├── checkstyle.txt
+├── Energy-System-Project.iml
+├── jackson-annotations-2.9.7.jar
+├── jackson-core-2.9.7.jar
+├── jackson-databind-2.9.7.jar
+├── out
+│   └── production
+│       └── proiect-etapa2-energy-system
+│           ├── checker
+│           │   ├── checkstyle-8.36.2-all.jar
+│           │   ├── Checkstyle.class
+│           │   └── poo_checks.xml
+│           ├── Config.class
+│           ├── entities
+│           │   └── EnergyType.class
+│           ├── Main.class
+│           ├── strategies
+│           │   └── EnergyChoiceStrategyType.class
+│           ├── Test.class
+│           └── TestType.class
+├── proiect-etapa2-energy-system.iml
+├── README.md
+├── results.out
+└── src
+    ├── checker
+    │   ├── checkstyle-8.36.2-all.jar
+    │   ├── Checkstyle.java
+    │   └── poo_checks.xml
+    ├── entities
+    │   └── EnergyType.java
+    ├── factory
+    │   ├── ConsumerOutput.java
+    │   ├── DistributorOutput.java
+    │   ├── EntityFactory.java
+    │   ├── OutputData.java
+    │   ├── Output.java
+    │   └── ProducerOutput.java
+    ├── fileio
+    │   ├── Consumer.java
+    │   ├── DataCons.java
+    │   ├── DistributorChange.java
+    │   ├── Distributor.java
+    │   ├── InitialData.java
+    │   ├── Input.java
+    │   ├── MonthlyUpdate.java
+    │   ├── MonthState.java
+    │   ├── NewConsumer.java
+    │   ├── ProducerChange.java
+    │   └── Producer.java
+    ├── input
+    │   └── MInput.java
+    ├── Main.java
+    ├── strategies
+    │   ├── EnergyChoiceStrategyType.java
+    │   ├── GreenStrategy.java
+    │   ├── IStrategy.java
+    │   ├── PriceStrategy.java
+    │   └── QuantityStrategy.java
+    └── Test.java
+```
 
